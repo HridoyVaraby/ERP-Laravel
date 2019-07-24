@@ -20,7 +20,7 @@
 				@csrf
 				<div class="form-group">
 					<label for="field-1" class="col-sm-3 control-label">
-						Collector name
+						Collector Name
 					</label>
 					<div class="col-md-6">
 						<input type="text" class="form-control" id="field-A" name="name" placeholder="Enter collector name" value="{{ old('name') }}">
