@@ -76,7 +76,7 @@ class PageController extends Controller
         $request->validate([
             'collector_name' => 'required',
             'collector_address' => 'required',
-            'collector_phone' => 'required|unique:collectors,collector_phone',
+            'collector_phone' => 'required|numeric|unique:collectors,collector_phone',
         ]);
         
         Collector::insert( [
