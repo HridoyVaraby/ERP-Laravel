@@ -51,7 +51,7 @@
 						Upload Company Logo
 					</label>
 					<div class="col-md-6">
-						<input type="file" name="logo" accept="image/*" class="form-control" id="field-A">
+						<input type="file" name="logo" accept="image/*" class="form-control-file" id="field-A">
 					</div>
 				</div>
 

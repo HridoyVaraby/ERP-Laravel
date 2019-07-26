@@ -15,12 +15,12 @@ class CreateCollectorsTable extends Migration
     {
         Schema::create('collectors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->nullable();
+            $table->string('collector_name');
+            $table->string('collector_email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->integer('phone')->unique();
-            $table->string('address');
-            $table->string('area');
+            $table->integer('collector_phone')->unique();
+            $table->string('collector_address');
+            $table->string('collection_area');
             $table->timestamps();
             $table->softDeletes();
         });

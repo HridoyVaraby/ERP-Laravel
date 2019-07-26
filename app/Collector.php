@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Collector extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['name', 'email', 'phone', 'address', 'area'];
+    protected $fillable = ['collector_name', 'collector_email', 'collector_phone', 'collector_address', 'collection_area'];
 }

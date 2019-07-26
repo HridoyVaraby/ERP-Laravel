@@ -74,17 +74,17 @@ class PageController extends Controller
     function addcollectorinsert(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'address' => 'required',
-            'phone' => 'required',
+            'collector_name' => 'required',
+            'collector_address' => 'required',
+            'collector_phone' => 'required|unique:collectors,collector_phone',
         ]);
         
         Collector::insert( [
-            'name' => $request->name,
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'area' => $request->area,
+            'collector_name' => $request->collector_name,
+            'collector_address' => $request->collector_address,
+            'collector_phone' => $request->collector_phone,
+            'collector_email' => $request->collector_email,
+            'collection_area' => $request->collection_area,
         ] );
         return back()->with('status', 'Collector Created Successfully!');
     }
