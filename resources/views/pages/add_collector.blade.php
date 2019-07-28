@@ -4,16 +4,6 @@
 
 	<!-- Add Collection Section -->
 	<div class="row Add_collector">
-		<!--<div class="col-md-12">
-			<div class="panel-heading">
-				<div class="panel-title">Add Collector</div>
-
-				<div class="panel-options">
-					<a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i class="entypo-cog"></i></a>
-					<a href="{{ url('/list-collectors')}}" data-rel="list"><i class="entypo-list"></i></a>
-				</div>
-			</div>
-		</div> -->
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-primary" data-collapsed="0">

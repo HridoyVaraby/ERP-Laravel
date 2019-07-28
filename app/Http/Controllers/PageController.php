@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Collector;
 
+use App\Company;
+
+use Image;
+
 class PageController extends Controller
 {
     function addborrower()
@@ -35,7 +39,8 @@ class PageController extends Controller
 
     function companydetails()
     {
-        return view('pages/company_details');
+        $single_company_info = Company::findOrFail(1);
+        return view('pages/company_details', compact('single_company_info'));
     }
 
     function listborrower()
@@ -87,6 +92,28 @@ class PageController extends Controller
             'collection_area' => $request->collection_area,
         ] );
         return back()->with('status', 'Collector Created Successfully!');
+    }
+
+    function addcompanyinsert(Request $request)
+    {
+        Company::find($request->id)->update([
+            'company_name' => $request->company_name,
+            'company_email' => $request->company_email,
+            'company_phone' => $request->company_phone,
+            'company_address' => $request->company_address,
+        ]);
+        if ($request->hasFile('logo')) {
+            $logo = $request->file('logo');
+            $filename = time() . '.' . $logo->getClientOriginalExtension();
+            $location = public_path('assets/images/' . $filename);
+            Image::make($logo)->resize(200, 50)->save($location);
+
+            Company::find($request->id)->update([
+                'logo' => $request->logo,
+            ]);
+        }
+
+        return back()->with('updatestatus', 'Details updated Successfully!');
     }
 
 
