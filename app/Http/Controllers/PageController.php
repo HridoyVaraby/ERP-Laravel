@@ -10,6 +10,8 @@ use App\Company;
 
 use Image;
 
+use Storage;
+
 class PageController extends Controller
 {
     function addborrower()
@@ -106,12 +108,14 @@ class PageController extends Controller
             $logo = $request->file('logo');
             $filename = time() . '.' . $logo->getClientOriginalExtension();
             $location = public_path('assets/images/' . $filename);
-            Image::make($logo)->resize(200, 50)->save($location);
-
-            Company::find($request->id)->update([
-                'logo' => $request->logo,
-            ]);
+            Image::make($logo)->resize(200, 75)->save($location);
+            $oldFilename = Company::find(1)->logo;
+            $request->logo = $filename;
+            Storage::delete($oldFilename);
         }
+        Company::find($request->id)->update([
+            'logo' => $request->logo,
+        ]);
 
         return back()->with('updatestatus', 'Details updated Successfully!');
     }
