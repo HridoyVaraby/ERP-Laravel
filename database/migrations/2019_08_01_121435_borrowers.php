@@ -13,7 +13,14 @@ class Borrowers extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('borrowers', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('borrower_name');
+            $table->integer('borrower_phone')->unique();
+            $table->string('borrower_address');
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class Borrowers extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('borrowers');
     }
 }

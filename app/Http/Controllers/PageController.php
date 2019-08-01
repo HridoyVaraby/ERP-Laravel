@@ -8,6 +8,8 @@ use App\Collector;
 
 use App\Company;
 
+use App\Borrower;
+
 use Image;
 
 use Storage;
@@ -47,7 +49,8 @@ class PageController extends Controller
 
     function listborrower()
     {
-        return view('pages/list_borrowers');
+        $borrowers = Borrower::orderby('id','desc')->paginate(10);
+        return view('pages/list_borrowers', compact('borrowers'));
     }
 
     function listcollector()
@@ -118,6 +121,22 @@ class PageController extends Controller
         ]);
 
         return back()->with('updatestatus', 'Details updated Successfully!');
+    }
+
+    function addborrowerinsert(Request $request)
+    {
+        $request->validate([
+            'borrower_name' => 'required',
+            'borrower_address' => 'required',
+            'borrower_phone' => 'required|numeric|unique:borrowers,borrower_phone',
+        ]);
+        
+        Borrower::insert( [
+            'borrower_name' => $request->borrower_name,
+            'borrower_address' => $request->borrower_address,
+            'borrower_phone' => $request->borrower_phone,
+        ] );
+        return back()->with('status', 'Borrower Created Successfully!');
     }
 
 

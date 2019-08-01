@@ -31,6 +31,7 @@ Route::get('/edit-profile', 'PageController@editprofile');
 //database route
 Route::post('/add-collector-insert', 'PageController@addcollectorinsert');
 Route::post('/add-company-insert', 'PageController@addcompanyinsert');
+Route::post('/add-borrower-insert', 'PageController@addborrowerinsert');
 
 
 
