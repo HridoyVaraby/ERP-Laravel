@@ -49,7 +49,7 @@
 						</tr>
 						@empty
 							<tr class="text-center">
-								<td colspan="6">No data found.</td>
+								<td colspan="5">No data found.</td>
 							</tr>
 						@endforelse
 					</tbody>
