@@ -72,10 +72,10 @@
 							</div>
 							<div class="form-group">
 								<label for="field-1" class="col-sm-3 control-label">
-									Collection Area (Not required)
+									Collection Area
 								</label>
 								<div class="col-md-6">
-									<input type="text" class="form-control" id="field-A" name="collection_area" placeholder="Enter collector's working area" value="{{ old('collection_area') }}">
+									<input type="text" class="form-control" id="field-A" name="collection_area" placeholder="Enter collector's working area" value="{{ old('collection_area') }}" required>
 								</div>
 							</div>
 
